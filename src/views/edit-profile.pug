@@ -1,0 +1,20 @@
+extends base
+
+block content
+    if errormessage
+        p=errormessage
+    form(method="POST", enctype = "multipart/form-data").edit-profile__form
+        label(for="avatar") Avatar
+        input(type="file", id = "avatar", name = "avatar", accept = "image/*")
+        label(for="name") Name
+        input(type = "text", placeholder = "Name", name = "name", value = loggedInUser.name, id = "name")
+        label(for="email") Email
+        input(type="email", placeholder = "E-mail", name = "email", value = loggedInUser.email, id = "email")
+        label(for="username") Username
+        input(type = "text", placeholder = "Username", name = "username", value = loggedInUser.username, id = "username")
+        label(for="location") Location
+        input(type = "text", placeholder = "Location", name = "location". value = loggedInUser.location, id = "location")
+        input(type = "submit", value = "Update Profile")
+        if !loggedInUser.socialOnly
+            div.edit-profile__password
+                a(href="change-password") Change Password &rarr;
